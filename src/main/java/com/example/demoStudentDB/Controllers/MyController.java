@@ -85,10 +85,11 @@ public class MyController {
 
         }
 
-        @RequestMapping(value="/findByFN/{fname}",method = RequestMethod.POST)
-        public String findByFN(@RequestParam("fname") String fname){
-            ModelAndView mv = new ModelAndView("view3");
-            return "findByFN";
+        @RequestMapping(value="/findByFN",method = RequestMethod.POST)
+        public ModelAndView findByFN(@RequestParam("fname") String fname){
+            ModelAndView mv = new ModelAndView("viewbyname");
+            mv.addObject("lstudents", sRepo.findByFname(fname));
+            return mv;
         }
 
 
